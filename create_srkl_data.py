@@ -23,11 +23,13 @@ from dateutil.relativedelta import relativedelta
 from clustering_utils_v2 import get_result_clustering
 from clustering_utils_v2 import random_clustering
 from clustering_utils_v2 import dtw_clustering
+from clustering_utils_v2 import ks_clustering
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--cluster', type=str, 
                     help='clustering methodi ARIMA or random', 
                     default='random')
+
 
 args = parser.parse_args()
 # python3 naver_finance.py
@@ -164,7 +166,9 @@ for k,v in stocks.items():
 
 #TODO be provided arguments about which datasets are made into srkl dataset
 #change to your datapath
-datapath = './data/2019/07/31/'
+today = datetime.now()
+datapath = './data/{:04d}/{:02d}/{:02d}'.format(today.year,today.month,today.day)
+#datapath = './data/2019/07/31/'
 print("Create srkl_data.mat")
 csv2mat(datapath)
 print("Done")
