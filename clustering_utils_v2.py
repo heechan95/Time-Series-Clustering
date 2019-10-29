@@ -321,12 +321,12 @@ def bayesian_clustering(rdir=ROOT_DIR):
     #TODO: import Tensorflow Probability, and MCMC
 
 
-    #from scipy import stats
-    #sz = len(filenames)
-    #distance_matrix = np.zeros((sz,sz))
-    #for i in range(sz):
-    #    for j in range(sz):
-    #        distance_matrix[i,j] = stats.ks_2samp(df_list[i].values, df_list[j].values)[0]
+    from scipy import stats
+    sz = len(filenames)
+    distance_matrix = np.zeros((sz,sz))
+    for i in range(sz):
+        for j in range(sz):
+            distance_matrix[i,j] = stats.ks_2samp(df_list[i].values, df_list[j].values)[0]
 
     from sklearn.cluster import AgglomerativeClustering
     num_cluster = 3
